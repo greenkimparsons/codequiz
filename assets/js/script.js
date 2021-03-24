@@ -2,32 +2,42 @@
 var startBtn = document.querySelector("#start-btn");
 var timerEl = document.querySelector(".timer-count");
 var quizCont = document.querySelector(".question");
-var choiceEl = document.querySelector(".choice");
+var choiceEl = document.querySelector("#choiceList");
+var choiceEl1 = document.querySelector("#choice1");
+var choiceEl2 = document.querySelector("#choice2");
+var choiceEl3 = document.querySelector("#choice3");
+var choiceEl4 = document.querySelector("#choice4");
+var choicesArr = [];
+
+choicesArr.push(choiceEl1);
+choicesArr.push(choiceEl2);
+choicesArr.push(choiceEl3);
+choicesArr.push(choiceEl4);
 
 //JAVASCRIPT VARIABLES
 //store array of objects - (3 types of data: question-string, potential choices-array of strings - add data attributes to see what the user clicked vs correct choice, correct choice)
-var questionArrIndex = 0;
-var questions = [
+var indexOfArr = 0;
+var quizParam = [
     {
         question: "Commonly used data types DO NOT include:",
-        choices: ["strings", "booleans", "alerts", "numbers"],
-        correct: "alerts"
+        choices: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
+        correct: 2
     },{
         question: "The condition in an if/else statement is enclosed within ___.",
-        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-        correct: "parentheses"
+        choices: ["1. quotes", "2. curly brackets", "3. parentheses", "4. square brackets"],
+        correct: 2
     },{
         question: "Arrays in JavaScript can be used to store ____.",
-        choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-        correct: "all of the above"
+        choices: ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"],
+        correct: 3
     },{
         question: "String values must be enclosed within ____ when being assigned to variables.",
-        choices: ["commas", "curly brackets", "quotes", "parentheses"],
-        correct: "quotes"
+        choices: ["1. commas", "2. curly brackets", "3. quotes", "4. parentheses"],
+        correct: 2
     },{
         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        choices: ["JaaScript", "terminal/bash", "for loops", "console.log"],
-        correct: "console.log"
+        choices: ["1. JavaScript", "2. terminal/bash", "3. for loops", "4. console.log"],
+        correct: 3
     }
 ];
 
@@ -45,18 +55,49 @@ startBtn.addEventListener("click", startGame);
 // FUNCTION CALLS
 function startGame () {
     timerCount = 60;
-    startBtn.disabled = true;
+    // startBtn.disabled = true;
     startTimer();
     quizStart();
 }
 
 // function to start quiz
 function quizStart (){
-    //clear out every time 
-    // quizCont.innerHTML("");
+    //clear out to new question every time 
+    quizCont.innerHTML = "";
+    // //getting the first question to appear after start btn is clicked
     quizCont.setAttribute("data-state", "visible");
-    quizCont.textContent = questions[0].question;
+    quizCont.textContent = quizParam[indexOfArr].question; //starting with first question
+    //how to make a list of the choices
+    for(var i = 0; i < choicesArr.length; i++){
+        // console.log(quizParam[i].choices[i]);
+        console.log(choicesArr[i]);
+        // var choiceBtn = document.createElement("button"); //creating a button for every choice
+        choicesArr[i].textContent = quizParam[i].choices[i];
+        // var li = document.createElement("li");
+        // li.textContent = choiceBtn;
+        // choiceBtn.setAttribute("data-index", i);
 
+        
+        
+        // li.appendChild(choiceBtn);
+        // choiceEl.appendChild(li);
+    }
+    // console.log(choiceBtn.textContent);
+}
+
+function checkAnswer(){
+    // if it does match increa
+
+    // indexOfArr++
+    // run getNextQuestion
+}
+
+function getNextQuestion (){
+    if(indexOfArr < quizParam.length){
+        quizStart();
+    } else {
+        endGame();
+    }
 }
 
 //function results () {
@@ -67,32 +108,6 @@ function quizStart (){
 
 // on submit, show results
 // submitBtn.addEventListener("click", showResults);
-
-// function renderChoices() {
-//     // TODO: Describe the functionality of the following two lines of code.
-//     // Wipe out the existing DOM to add the array of choices
-//     choices.innerHTML = "";
-//     choicesSpan.textContent = choices.length;
-    
-//     // We iterate over the choices array. For every choice, we follow our 3-step process.
-//     for (var i = 0; i < choices.length; i++) {
-//       var choice = choice[i];
-//       // 1. Create an element.
-//       var li = document.createElement("li");
-//       // 2. Add content to the element.
-//       li.textContent = choice;
-//       li.setAttribute("data-index", i);
-//   ​
-//       var button = document.createElement("button");
-//       button.textContent = "Complete ✔️";
-//   ​
-//       // 3. Append to an existing element.
-//       li.appendChild(button);
-//       todoList.appendChild(li);
-//     }
-//   }
-
-
 
 //TIMER
 function startTimer () {
@@ -121,6 +136,5 @@ function startTimer () {
 //   init();
 
 
-  //innerHtml : wipes everything out between answers
   //3 step process to dynamically generate content: create element, add attributes/content, and append to existing element
   //highscores - do second to last 
