@@ -1,32 +1,33 @@
 //DOM VARIABLES
 var startBtn = document.querySelector("#start-btn");
 var timerEl = document.querySelector(".timer-count");
-var quizCont = document.querySelector(".container");
-// var = document.getElementById("");
+var quizCont = document.querySelector(".question");
+var choiceEl = document.querySelector(".choice");
 
 //JAVASCRIPT VARIABLES
 //store array of objects - (3 types of data: question-string, potential choices-array of strings - add data attributes to see what the user clicked vs correct choice, correct choice)
+var questionArrIndex = 0;
 var questions = [
     {
-        question : "Commonly used data types DO NOT include:",
-        choices : ["strings", "booleans", "alerts", "numbers"],
-        correct : "alerts"
+        question: "Commonly used data types DO NOT include:",
+        choices: ["strings", "booleans", "alerts", "numbers"],
+        correct: "alerts"
     },{
-        question : "The condition in an if/else statement is enclosed within ___.",
-        choices : ["quotes", "curly brackets", "parentheses", "square brackets"],
-        correct : "parentheses"
+        question: "The condition in an if/else statement is enclosed within ___.",
+        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+        correct: "parentheses"
     },{
-        question : "Arrays in JavaScript can be used to store ____.",
-        choices : ["numbers and strings", "other arrays", "booleans", "all of the above"],
-        correct : "all of the above"
+        question: "Arrays in JavaScript can be used to store ____.",
+        choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+        correct: "all of the above"
     },{
-        question : "String values must be enclosed within ____ when being assigned to variables.",
-        choiceA : ["commas", "curly brackets", "quotes", "parentheses"],
-        correct : "quotes"
+        question: "String values must be enclosed within ____ when being assigned to variables.",
+        choices: ["commas", "curly brackets", "quotes", "parentheses"],
+        correct: "quotes"
     },{
-        question : "A very useful tool used during development and debugging for printing content to the debugger is:",
-        choices : ["JaaScript", "terminal/bash", "for loops", "console.log"],
-        correct : "console.log"
+        question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        choices: ["JaaScript", "terminal/bash", "for loops", "console.log"],
+        correct: "console.log"
     }
 ];
 
@@ -37,7 +38,7 @@ var isWin = false;
 
 // EVENT LISTENERS
 //WHAT HAPPENS WHEN I CLICK START
-quizCont.addEventListener("click", startGame);
+// quizCont.addEventListener("click", startGame);
 
 startBtn.addEventListener("click", startGame);
 
@@ -45,17 +46,18 @@ startBtn.addEventListener("click", startGame);
 function startGame () {
     timerCount = 60;
     startBtn.disabled = true;
-    // quizStart();
     startTimer();
+    quizStart();
 }
 
 // function to start quiz
 function quizStart (){
     //clear out every time 
-    quizCont.innerHTML("");
-    quizCont.textContent(".quiz")
+    // quizCont.innerHTML("");
+    quizCont.setAttribute("data-state", "visible");
+    quizCont.textContent = questions[0].question;
 
-// }
+}
 
 //function results () {
 
@@ -66,29 +68,29 @@ function quizStart (){
 // on submit, show results
 // submitBtn.addEventListener("click", showResults);
 
-function renderChoices() {
-    // TODO: Describe the functionality of the following two lines of code.
-    // Wipe out the existing DOM to add the array todos
-    todoList.innerHTML = "";
-    todoCountSpan.textContent = todos.length;
+// function renderChoices() {
+//     // TODO: Describe the functionality of the following two lines of code.
+//     // Wipe out the existing DOM to add the array of choices
+//     choices.innerHTML = "";
+//     choicesSpan.textContent = choices.length;
     
-    // We iterate over the todos array. For every todo, we follow our 3-step process.
-    for (var i = 0; i < todos.length; i++) {
-      var todo = todos[i];
-      // 1. Create an element.
-      var li = document.createElement("li");
-      // 2. Add content to the element.
-      li.textContent = todo;
-      li.setAttribute("data-index", i);
-  ​
-      var button = document.createElement("button");
-      button.textContent = "Complete ✔️";
-  ​
-      // 3. Append to an existing element.
-      li.appendChild(button);
-      todoList.appendChild(li);
-    }
-  }
+//     // We iterate over the choices array. For every choice, we follow our 3-step process.
+//     for (var i = 0; i < choices.length; i++) {
+//       var choice = choice[i];
+//       // 1. Create an element.
+//       var li = document.createElement("li");
+//       // 2. Add content to the element.
+//       li.textContent = choice;
+//       li.setAttribute("data-index", i);
+//   ​
+//       var button = document.createElement("button");
+//       button.textContent = "Complete ✔️";
+//   ​
+//       // 3. Append to an existing element.
+//       li.appendChild(button);
+//       todoList.appendChild(li);
+//     }
+//   }
 
 
 
@@ -96,7 +98,7 @@ function renderChoices() {
 function startTimer () {
     timer = setInterval(function() {
         timerCount--;
-        timerEl.textContent = timerCount;
+        timerEl.textContent = "Time: " + timerCount + " seconds";
         if (timerCount >= 0) {
             if (isWin && timerCount > 0) {
                 clearInterval(timer);

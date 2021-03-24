@@ -9,17 +9,14 @@
 </head>
 <header>
     <h2>View Highscores</h2>
-    <div class="timer-count">60 seconds</div>
+    <div class="timer-count">Time: 60 seconds</div>
 </header>
 <body>
     <h1>Coding Quiz Challenge</h1>
     <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
     <button id = "start-btn">Start Quiz</button>
-    <div class="container" id = "choices">
-        <div class="choice" id="A" onclick = "checkAnswer('A')" data-state="hidden"></div>
-        <div class="choice" id="B" onclick = "checkAnswer('A')" data-state="hidden"></div>
-        <div class="choice" id="C" onclick = "checkAnswer('A')" data-state="hidden"></div>
-        <div class="choice" id="D" onclick = "checkAnswer('A')" data-state="hidden"></div>
+    <div class="question" data-state="hidden">
+        <div class="choice" id="choices" onclick = "checkAnswer('A')"></div>
     </div>
     <div id= "results"></div>
     <script src="./assets/js/script.js"></script>
