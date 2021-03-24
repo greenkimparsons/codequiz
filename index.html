@@ -15,15 +15,25 @@
     <h1>Coding Quiz Challenge</h1>
     <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
     <button id = "start-btn">Start Quiz</button>
-    <div class="question" data-state="hidden"> </div>
-        <div id="choiceList" onclick = "checkAnswer('A')">
+    <div class="question" data-state="hidden"></div>
+        <div id="choiceList" onclick ="checkAnswer(event)">
             <div id="choice1"></div>
             <div id="choice2"></div>
             <div id="choice3"></div>
             <div id="choice4"></div>
         </div>
-   
-    <div id= "results"></div>
+    <form>
+        <h2>All done!</h2>
+        <p>Your final score is </p>
+        <input type="text" id="initials-text" />
+        <button onclick="addName()">Submit</button>
+    </form>
+    <div class="highscores">
+        <h2>Highscores</h2>
+        <ul id = "initial-list"></ul>
+        
+      </div>
+    
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

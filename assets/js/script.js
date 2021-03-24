@@ -14,30 +14,33 @@ choicesArr.push(choiceEl2);
 choicesArr.push(choiceEl3);
 choicesArr.push(choiceEl4);
 
+var highScores = [];
+
 //JAVASCRIPT VARIABLES
 //store array of objects - (3 types of data: question-string, potential choices-array of strings - add data attributes to see what the user clicked vs correct choice, correct choice)
 var indexOfArr = 0;
+var scoreEl = 0;
 var quizParam = [
     {
         question: "Commonly used data types DO NOT include:",
         choices: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
-        correct: 2
+        correct: "3. alerts"
     },{
         question: "The condition in an if/else statement is enclosed within ___.",
         choices: ["1. quotes", "2. curly brackets", "3. parentheses", "4. square brackets"],
-        correct: 2
+        correct: "3. parentheses"
     },{
         question: "Arrays in JavaScript can be used to store ____.",
         choices: ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"],
-        correct: 3
+        correct: "4. all of the above"
     },{
         question: "String values must be enclosed within ____ when being assigned to variables.",
         choices: ["1. commas", "2. curly brackets", "3. quotes", "4. parentheses"],
-        correct: 2
+        correct: "3. quotes"
     },{
         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
         choices: ["1. JavaScript", "2. terminal/bash", "3. for loops", "4. console.log"],
-        correct: 3
+        correct: "4. console.log"
     }
 ];
 
@@ -48,8 +51,6 @@ var isWin = false;
 
 // EVENT LISTENERS
 //WHAT HAPPENS WHEN I CLICK START
-// quizCont.addEventListener("click", startGame);
-
 startBtn.addEventListener("click", startGame);
 
 // FUNCTION CALLS
@@ -64,32 +65,28 @@ function startGame () {
 function quizStart (){
     //clear out to new question every time 
     quizCont.innerHTML = "";
-    // //getting the first question to appear after start btn is clicked
-    quizCont.setAttribute("data-state", "visible");
+    // getting the first question to appear after start btn is clicked
+    // quizCont.setAttribute("data-state", "visible");
     quizCont.textContent = quizParam[indexOfArr].question; //starting with first question
     //how to make a list of the choices
     for(var i = 0; i < choicesArr.length; i++){
-        // console.log(quizParam[i].choices[i]);
-        console.log(choicesArr[i]);
-        // var choiceBtn = document.createElement("button"); //creating a button for every choice
+        // console.log(choicesArr[i]);
+        var choiceBtn = document.createElement("button"); //creating a button for every choice
         choicesArr[i].textContent = quizParam[i].choices[i];
-        // var li = document.createElement("li");
-        // li.textContent = choiceBtn;
-        // choiceBtn.setAttribute("data-index", i);
-
         
-        
-        // li.appendChild(choiceBtn);
-        // choiceEl.appendChild(li);
     }
-    // console.log(choiceBtn.textContent);
 }
 
-function checkAnswer(){
-    // if it does match increa
-
-    // indexOfArr++
-    // run getNextQuestion
+function checkAnswer(event){
+    // if the user guessed it right, move to next question
+    if (event.target.textContent === quizParam[indexOfArr].correct){
+        indexOfArr++;
+        scoreEl++;
+    } else {
+        //subtract 10 seconds from timer
+        timer = timer - 10;
+        getNextQuestion();
+    }
 }
 
 function getNextQuestion (){
@@ -100,10 +97,13 @@ function getNextQuestion (){
     }
 }
 
-//function results () {
+function endGame () {
+    //show high scores
+}
 
-//}
+function addName () {
 
+}
 // quizStart();
 
 // on submit, show results
