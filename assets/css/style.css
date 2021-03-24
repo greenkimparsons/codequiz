@@ -1,0 +1,27 @@
+header {
+    padding: 20px;
+    display: inline;
+}
+
+h2 {
+    float: left;
+    margin: 0px;
+}
+
+body {
+    text-align: center;
+}
+
+.timer-count {
+    float: right;
+    font-size: 1.5em;
+}
+
+#start-btn {
+    background-color: purple;
+    color: white;
+    border-style: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin: auto;
+}

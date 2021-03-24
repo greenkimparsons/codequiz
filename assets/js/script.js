@@ -5,38 +5,27 @@ var timerEl = document.querySelector(".timer-count");
 
 //JAVASCRIPT VARIABLES
 
-
 // FUNCTION VARIABLES
 var timer;
 var timerCount;
 var isWin = false;
 
 // EVENT LISTENERS
+//WHAT HAPPENS WHEN I CLICK START
 startBtn.addEventListener("click", startGame);
 
 // FUNCTION CALLS
 function startGame () {
     timerCount = 60;
     startBtn.disabled = true;
+    // quizStart();
     startTimer();
 }
 
-function startTimer () {
-    timer = setInterval(function() {
-        timerCount--;
-        timerEl.textContent = timerCount;
-        if (timerCount >= 0) {
-            if (isWin && timerCount > 0) {
-                clearInterval(timer);
-                winGame();
-            }
-        }
-        if (timerCount === 0) {
-        clearInterval(timer);
-        loseGame();
-        }
-    }, 1000);
-}
+// //function to start quiz
+// function quizStart (){
+
+// }
 
 
 // function renderChoices() {
@@ -65,6 +54,25 @@ function startTimer () {
 
 
 
+//TIMER
+function startTimer () {
+    timer = setInterval(function() {
+        timerCount--;
+        timerEl.textContent = timerCount;
+        if (timerCount >= 0) {
+            if (isWin && timerCount > 0) {
+                clearInterval(timer);
+                winGame();
+            }
+        }
+        if (timerCount === 0) {
+        clearInterval(timer);
+        loseGame();
+        }
+    }, 1000);
+}
+
+
 // // The init() function fires when the page is loaded 
 // function init() {
 //     // When the init function is executed, the code inside renderLastGrade function will also execute
@@ -72,10 +80,8 @@ function startTimer () {
 //   }
 //   init();
 
-  //starting the quiz
-  //event listeners - what happens when i click start
+
   //store array of objects - (3 types of data: question-string, potential choices-array of strings - add data attributes to see what the user clicked vs correct choice, correct choice)
   //innerHtml : wipes everything out between answers
   //3 step process to dynamically generate content: create element, add attributes/content, and append to existing element
   //highscores - do second to last 
-  //timer - do last
