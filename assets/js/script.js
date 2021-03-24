@@ -5,37 +5,28 @@ var quizCont = document.querySelector(".container");
 // var = document.getElementById("");
 
 //JAVASCRIPT VARIABLES
+//store array of objects - (3 types of data: question-string, potential choices-array of strings - add data attributes to see what the user clicked vs correct choice, correct choice)
 var questions = [
     {
         question : "Commonly used data types DO NOT include:",
-        choiceA : "Correct",
-        choiceB : "Wrong",
-        choiceC : "Wrong",
-        correct : "A"
+        choices : ["strings", "booleans", "alerts", "numbers"],
+        correct : "alerts"
     },{
         question : "The condition in an if/else statement is enclosed within ___.",
-        choiceA : "Wrong",
-        choiceB : "Correct",
-        choiceC : "Wrong",
-        correct : "B"
+        choices : ["quotes", "curly brackets", "parentheses", "square brackets"],
+        correct : "parentheses"
     },{
         question : "Arrays in JavaScript can be used to store ____.",
-        choiceA : "Wrong",
-        choiceB : "Wrong",
-        choiceC : "Correct",
-        correct : "C"
+        choices : ["numbers and strings", "other arrays", "booleans", "all of the above"],
+        correct : "all of the above"
     },{
         question : "String values must be enclosed within ____ when being assigned to variables.",
-        choiceA : "Wrong",
-        choiceB : "Wrong",
-        choiceC : "Correct",
-        correct : "C"
+        choiceA : ["commas", "curly brackets", "quotes", "parentheses"],
+        correct : "quotes"
     },{
         question : "A very useful tool used during development and debugging for printing content to the debugger is:",
-        choiceA : "Wrong",
-        choiceB : "Wrong",
-        choiceC : "Correct",
-        correct : "C"
+        choices : ["JaaScript", "terminal/bash", "for loops", "console.log"],
+        correct : "console.log"
     }
 ];
 
@@ -60,6 +51,8 @@ function startGame () {
 
 // function to start quiz
 function quizStart (){
+    //clear out every time 
+    quizCont.innerHTML("");
     quizCont.textContent(".quiz")
 
 // }
@@ -73,29 +66,29 @@ function quizStart (){
 // on submit, show results
 // submitBtn.addEventListener("click", showResults);
 
-// function renderChoices() {
-//     // TODO: Describe the functionality of the following two lines of code.
-//     // Wipe out the existing DOM to add the array todos
-//     todoList.innerHTML = "";
-//     todoCountSpan.textContent = todos.length;
+function renderChoices() {
+    // TODO: Describe the functionality of the following two lines of code.
+    // Wipe out the existing DOM to add the array todos
+    todoList.innerHTML = "";
+    todoCountSpan.textContent = todos.length;
     
-//     // We iterate over the todos array. For every todo, we follow our 3-step process.
-//     for (var i = 0; i < todos.length; i++) {
-//       var todo = todos[i];
-//       // 1. Create an element.
-//       var li = document.createElement("li");
-//       // 2. Add content to the element.
-//       li.textContent = todo;
-//       li.setAttribute("data-index", i);
-//   ​
-//       var button = document.createElement("button");
-//       button.textContent = "Complete ✔️";
-//   ​
-//       // 3. Append to an existing element.
-//       li.appendChild(button);
-//       todoList.appendChild(li);
-//     }
-//   }
+    // We iterate over the todos array. For every todo, we follow our 3-step process.
+    for (var i = 0; i < todos.length; i++) {
+      var todo = todos[i];
+      // 1. Create an element.
+      var li = document.createElement("li");
+      // 2. Add content to the element.
+      li.textContent = todo;
+      li.setAttribute("data-index", i);
+  ​
+      var button = document.createElement("button");
+      button.textContent = "Complete ✔️";
+  ​
+      // 3. Append to an existing element.
+      li.appendChild(button);
+      todoList.appendChild(li);
+    }
+  }
 
 
 
@@ -126,7 +119,6 @@ function startTimer () {
 //   init();
 
 
-  //store array of objects - (3 types of data: question-string, potential choices-array of strings - add data attributes to see what the user clicked vs correct choice, correct choice)
   //innerHtml : wipes everything out between answers
   //3 step process to dynamically generate content: create element, add attributes/content, and append to existing element
   //highscores - do second to last 
