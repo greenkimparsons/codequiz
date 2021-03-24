@@ -15,11 +15,13 @@
     <h1>Coding Quiz Challenge</h1>
     <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
     <button id = "start-btn">Start Quiz</button>
-    <script src="./assets/js/script.js"></script>
-    <div class="questions">
-        <h3>
-            Commonly used data types DO NOT include:
-        </h3>
+    <div class="container" id = "choices">
+        <div class="choice" id="A" onclick = "checkAnswer('A')" data-state="hidden"></div>
+        <div class="choice" id="B" onclick = "checkAnswer('A')" data-state="hidden"></div>
+        <div class="choice" id="C" onclick = "checkAnswer('A')" data-state="hidden"></div>
+        <div class="choice" id="D" onclick = "checkAnswer('A')" data-state="hidden"></div>
     </div>
+    <div id= "results"></div>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>

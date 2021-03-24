@@ -1,9 +1,43 @@
 //DOM VARIABLES
 var startBtn = document.querySelector("#start-btn");
 var timerEl = document.querySelector(".timer-count");
+var quizCont = document.querySelector(".container");
 // var = document.getElementById("");
 
 //JAVASCRIPT VARIABLES
+var questions = [
+    {
+        question : "Commonly used data types DO NOT include:",
+        choiceA : "Correct",
+        choiceB : "Wrong",
+        choiceC : "Wrong",
+        correct : "A"
+    },{
+        question : "The condition in an if/else statement is enclosed within ___.",
+        choiceA : "Wrong",
+        choiceB : "Correct",
+        choiceC : "Wrong",
+        correct : "B"
+    },{
+        question : "Arrays in JavaScript can be used to store ____.",
+        choiceA : "Wrong",
+        choiceB : "Wrong",
+        choiceC : "Correct",
+        correct : "C"
+    },{
+        question : "String values must be enclosed within ____ when being assigned to variables.",
+        choiceA : "Wrong",
+        choiceB : "Wrong",
+        choiceC : "Correct",
+        correct : "C"
+    },{
+        question : "A very useful tool used during development and debugging for printing content to the debugger is:",
+        choiceA : "Wrong",
+        choiceB : "Wrong",
+        choiceC : "Correct",
+        correct : "C"
+    }
+];
 
 // FUNCTION VARIABLES
 var timer;
@@ -12,6 +46,8 @@ var isWin = false;
 
 // EVENT LISTENERS
 //WHAT HAPPENS WHEN I CLICK START
+quizCont.addEventListener("click", startGame);
+
 startBtn.addEventListener("click", startGame);
 
 // FUNCTION CALLS
@@ -22,11 +58,20 @@ function startGame () {
     startTimer();
 }
 
-// //function to start quiz
-// function quizStart (){
+// function to start quiz
+function quizStart (){
+    quizCont.textContent(".quiz")
 
 // }
 
+//function results () {
+
+//}
+
+// quizStart();
+
+// on submit, show results
+// submitBtn.addEventListener("click", showResults);
 
 // function renderChoices() {
 //     // TODO: Describe the functionality of the following two lines of code.
