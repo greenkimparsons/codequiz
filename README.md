@@ -6,5 +6,5 @@
 3) Worked with tutor, but confused me more. 
 4) It was so hard, I wish I had more time. 
 ## Deployed Site
-[Deployed Site](https://greenkimparsons.github.io/code-quiz/.)
+[Deployed Site](https://greenkimparsons.github.io/codequiz/.)
 ![screenshot](./assets/codequiz.png)
