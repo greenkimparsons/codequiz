@@ -6,4 +6,4 @@
 3) Worked with tutor, but confused me more. 
 ## Deployed Site
 [Deployed Site](https://greenkimparsons.github.io/code-quiz/.)
-![screenshot](./assets/passwordgenerator.png)
+![screenshot](./assets/codequiz.png)

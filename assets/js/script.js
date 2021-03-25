@@ -1,5 +1,6 @@
 //DOM VARIABLES
 var startBtn = document.getElementById("start-btn");
+var intro = document.querySelector("intro")
 var timerEl = document.querySelector(".timer-count");
 var question = document.querySelector(".question"); //was quizCont
 var choiceList = document.querySelector("#choiceList");
