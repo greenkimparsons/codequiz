@@ -1,20 +1,26 @@
 //DOM VARIABLES
-var startBtn = document.querySelector("#start-btn");
+var startBtn = document.getElementById("start-btn");
 var timerEl = document.querySelector(".timer-count");
-var quizCont = document.querySelector(".question");
-var choiceEl = document.querySelector("#choiceList");
+var question = document.querySelector(".question"); //was quizCont
+var choiceList = document.querySelector("#choiceList");
 var choiceEl1 = document.querySelector("#choice1");
 var choiceEl2 = document.querySelector("#choice2");
 var choiceEl3 = document.querySelector("#choice3");
 var choiceEl4 = document.querySelector("#choice4");
+var initials = document.getElementById("saved-initials")
+var submitBtn = document.getElementById("submit-btn")
 var choicesArr = [];
 
 choicesArr.push(choiceEl1);
 choicesArr.push(choiceEl2);
 choicesArr.push(choiceEl3);
 choicesArr.push(choiceEl4);
+//variables for highscores 
 
-var highScores = [];
+var initialInput = document.querySelector("#initials-text");
+var initialList = document.querySelector("#initial-list");
+
+var highscoresArr = [];
 
 //JAVASCRIPT VARIABLES
 //store array of objects - (3 types of data: question-string, potential choices-array of strings - add data attributes to see what the user clicked vs correct choice, correct choice)
@@ -51,12 +57,17 @@ var isWin = false;
 
 // EVENT LISTENERS
 //WHAT HAPPENS WHEN I CLICK START
-startBtn.addEventListener("click", startGame);
+startBtn.addEventListener("click", startGame)
+
+submitBtn.addEventListener("click", function(event){
+    event.preventDefault()
+    saveName()
+})
 
 // FUNCTION CALLS
 function startGame () {
     timerCount = 60;
-    // startBtn.disabled = true;
+    choiceList.classList.remove("hide")
     startTimer();
     quizStart();
 }
@@ -64,10 +75,10 @@ function startGame () {
 // function to start quiz
 function quizStart (){
     //clear out to new question every time 
-    quizCont.innerHTML = "";
+    question.innerHTML = "";
     // getting the first question to appear after start btn is clicked
     // quizCont.setAttribute("data-state", "visible");
-    quizCont.textContent = quizParam[indexOfArr].question; //starting with first question
+    question.textContent = quizParam[indexOfArr].question; //starting with first question
     //how to make a list of the choices
     for(var i = 0; i < choicesArr.length; i++){
         // console.log(choicesArr[i]);
@@ -101,9 +112,43 @@ function endGame () {
     //show high scores
 }
 
-function addName () {
 
-}
+function saveName() {
+    // Save related form data as an object
+    var initialName = {
+      initials: initials.value
+    };
+    // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
+    localStorage.setItem("initialName", JSON.stringify(initialName));
+  }
+  
+
+  function saveLastGrade() {
+    // Save related form data as an object
+    var studentGrade = {
+      student: student.value,
+      grade: grade.value,
+      comment: comment.value.trim()
+    };
+    // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
+    localStorage.setItem("studentGrade", JSON.stringify(studentGrade));
+  }
+  
+
+
+var viewHighscores = document.getElementById("#showHighscores");
+var highscoresCont = document.querySelector(".highscoresCont");
+var state = "none";
+
+// viewHighscores.addEventListener("click", function() {
+//     if(state === "none"){
+//         state = "block"
+//         highscoresCont.setAttribute("display", "block");
+//     } else {
+//         state = "none";
+//         highscoresCont.setAttribute("display", "none");
+//     }
+// });
 // quizStart();
 
 // on submit, show results
